@@ -72,7 +72,7 @@ var questions = [
 
     
     var setTime = function () {
-        timeLeft = 50;
+        timeLeft = 60;
 
     var timercheck = setInterval(function() {
         timerEl.innerText = timeLeft;
@@ -115,19 +115,24 @@ var questions = [
         };
     };
 
-
-    var displayQuestion = function(index) {
-        questionEl.innerText = index.q
-        for (var i = 0; i < index.choices.length; i++) {
+    var displayQuestion = function() {
+        var currentQuestion = questions[QuestionIndex]
+        questionEl.textContent = currentQuestion.questions;
+        optionsbtnEl.innerHTML=""
+        currentQuestion.opts.forEach(function (option, i) { 
             var answerbutton = document.createElement('button')
-            answerbutton.innerText = index.choices[i].choice
-            answerbutton.classList.add('btn')
-            answerbutton.classList.add('answerbtn')
-            answerbutton.addEventListener("click", answerCheck)
+            answerbutton.setAttribute("class", "option");
+            answerbutton.setAttribute("value", option)
+            answerbutton.textContent = i + 1 + ". " + option;
+            answerbutton.onclick = answerCheck
             optionsbtnEl.appendChild(answerbutton)
-            }
+            })
         };
-   
+    
+
+console.log(displayQuestion)
+
+
     var answerCorrect = function() {
         if (correctEl.className = "hide") {
             correctEl.classList.remove("hide")
@@ -148,8 +153,8 @@ var questions = [
 
     
     var answerCheck = function(event) {
-        var selectedanswer = event.target
-            if (arrayShuffledQuestions[QuestionIndex].a === selectedanswer.innerText){
+        var selectedAnswer = event.target
+            if (arrayShuffledQuestions[QuestionIndex].a === selectedAnswer.innerText){
                 answerCorrect()
                 score = score + 7
             }
@@ -157,7 +162,8 @@ var questions = [
             else {
               answerWrong()
               score = score - 1;
-              timeLeft = timeLeft - 3;
+              timeLeft = timeLeft - 5;
+              
           };
 
         
@@ -187,19 +193,19 @@ var questions = [
         event.preventDefault() 
         var initials = document.querySelector("#initials").value;
         if (!initials) {
-          alert("Enter your intials!");
+          alert("Enter your intials!!");
           return;
         }
 
       formInitials.reset();
 
-      var HighScore = {
+      var highscore = {
       initials: initials,
       score: score
       } 
 
      
-      HighScores.push(HighScore);
+      HighScores.push(highscore);
       HighScores.sort((a, b) => {return b.score-a.score});
 
    
