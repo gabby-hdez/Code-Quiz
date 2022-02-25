@@ -4,42 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
     <title>Coding Quiz</title>
 </head>
+
 <body>
-<a href="highscore.html">View Highscores</a>
+    <header>
+        <h4 id="view-highscores">View Highscores</h4> 
+        <h4 class="timer">Time: <span id="timer"></span></h4>
+    </header>
 
-<div id="wrapper">
-    <div id="currentTime"></div>
-
-    <div id="opening-info">
-        <h1>Coding Quiz Challenge</h1>
-
-        <p>Answer the following questions correctly.If you answer one of the 
-            questions incorrectly then time will be deducted for you to answer 
-            the question.</p>
-
-        <div id="question-container"></div>
-
-        <button class="start-button">Start</button>
+    <div id="start-info" class="display">
+        <div class="start-page">
+            <h1>Coding Quiz Challenge</h1>  
+            <p>Answer the following questions correctly.If you answer one of the 
+                questions incorrectly then 10 seconds of time will be deducted for you to answer 
+                the question!
+            </p>
+            <button class="btn-start" id="start-game">Start Quiz</button>
+        </div>    
     </div>
-    
-    
+
+    <div id="question-container" class="hide">
+        <div class="container-question">
+            <div id="question"></div>
+            <div id="options-btn" class="btn-options"></div>
+        </div>
+    </div>
+
+    <div id="end-game" class="hide">
+       <div class="end-game">
+        <div id=final-score>
+            <h1>All done!</h1>
+        </div>  
+        <form id="initials-form" class="initials">
+          <p> Enter Initials:
+            <input type="text" name="initials" id="initials" class="text-input" />
+            <button class="btn startend" id="sumbit-score" type="submit">Submit</button> </p>
+          </form>
+        </div>
+    </div>
+
+    <div id="highscore-container" class="hide">
+      <div class="highscores-container">
+        <h1 class="highscore">High Scores</h1>
+        <ul id="highscore-list" class="score-list"></ul>
+    <div>
+        <button class="btn" id="go-back">Go back</button>
+        <button class="btn" id="clear-high-scores">Clear high scores</button>
+    </div>
+    </div>
 </div>
 
-<!-- <div id="end-game" class="hide">
-    <h3>End of Game</h3>
-    <p>Your final score is <span id="final-score"></span></p>
-    <p>Enter your initials <input type="text" id= "initials"></p>
-    <button id="submit-button" type="submit">Submit</button>
+<div class="hide" id="correct">
+    <h2>Correct!!!</h2>
+</div>
+<div class="hide" id="wrong">
+    <h2>Wrong!!! </h2>
+</div>
 
-</div> -->
-
-<body>
-
-
-<!-- <div id="correct-alert" ></div> -->
     <script src="./assets/script.js"></script>
 </body>
 </html>
